@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - Celine Oliveira Barros</title>
+  <link rel="stylesheet" href="/css/blog.css" />
+  <script src="/js/markdown-parser.js"></script>
+  <script src="/js/blog-utils.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Celine Oliveira Barros</a>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/resume.html">Resume</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="blog-container">
+      <h1 class="blog-title">Blog</h1>
+      <p class="page-subtitle">Thoughts on psychology, life, everything and more...</p>
+
+      <!-- Posts Listing -->
+      <div id="posts-listing">
+        <p class="center" style="padding: 2rem 0;">Loading posts...</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Load blog posts when page loads
+    document.addEventListener('DOMContentLoaded', renderBlogListing);
+  </script>
+</body>
+</html>

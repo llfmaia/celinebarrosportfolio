@@ -71,6 +71,7 @@
     background: white;
     color: var(--ink-light);
     transition: all 0.25s;
+    text-decoration: none;
   }
   .toolbar-btn:hover {
     transform: translateY(-1px);
@@ -358,7 +359,11 @@
 <!-- TOOLBAR -->
 <div class="toolbar">
   <span class="toolbar-label">Celine's Resume</span>
-  <button class="toolbar-btn primary" onclick="window.print()">&#128438; Print / Save PDF</button>
+  <div style="display: flex; gap: 1rem;">
+    <a href="/" class="toolbar-btn">← Home</a>
+    <a href="/blog.html" class="toolbar-btn">Blog</a>
+    <button class="toolbar-btn primary" onclick="window.print()">&#128438; Print / Save PDF</button>
+  </div>
 </div>
 
 <!-- RESUME -->

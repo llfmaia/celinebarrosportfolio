@@ -1,0 +1,43 @@
+# === DEVELOPMENT ONLY (DO NOT DEPLOY) ===
+
+# Blog editor admin pages (development only)
+/admin/
+/server.js
+/publish.js
+
+# Blog editor JavaScript & styles (dev only)
+/js/blog-editor.js
+/css/blog-editor.css
+
+# Node.js server and dependencies (dev only)
+/package.json
+/package-lock.json
+/node_modules/
+npm-debug.log
+yarn-error.log
+
+# Local-only setup/debug docs (not part of public site)
+/README.md
+/BLOG_SETUP.md
+/QUICK_START.md
+/QUICK_REFERENCE.md
+/INVENTORY.md
+/STORAGE_DEBUG.md
+
+# === DRAFT CONTENT (LOCAL ONLY) ===
+
+# Draft blog posts
+posts/drafts/
+
+# Draft images
+images/drafts/
+
+# Editor state
+.editor-state.json
+
+# === OS FILES ===
+
+.DS_Store
+Thumbs.db
+.env
+.env.local
