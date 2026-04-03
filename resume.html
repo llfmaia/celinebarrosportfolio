@@ -401,11 +401,11 @@
     <button type="button" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
       <span class="theme-toggle-label theme-toggle-label--dark" aria-hidden="true">
         <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-        Dark
+        <span data-en>Dark</span><span data-pt>Escuro</span>
       </span>
       <span class="theme-toggle-label theme-toggle-label--light" aria-hidden="true">
         <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-        Light
+        <span data-en>Light</span><span data-pt>Claro</span>
       </span>
     </button>
     <button type="button" class="lang-toggle" aria-label="Switch language">
@@ -418,8 +418,8 @@
       <span class="lang-label-en">PT-BR</span>
       <span class="lang-label-pt">en</span>
     </button>
-    <a href="./index.html" class="toolbar-btn">← Home</a>
-    <a href="./blog.html" class="toolbar-btn">Blog</a>
+    <a href="./index.html" class="toolbar-btn"><span data-en>← Home</span><span data-pt>← Início</span></a>
+    <a href="./blog.html" class="toolbar-btn"><span data-en>Blog</span><span data-pt>Blog</span></a>
     <button class="toolbar-btn primary" onclick="window.print()">&#128438; <span data-en>Print / Save PDF</span><span data-pt>Imprimir / Salvar PDF</span></button>
   </div>
 </div>
@@ -641,6 +641,7 @@
     function applyLang(lang) {
       document.documentElement.setAttribute('data-lang', lang);
       document.documentElement.lang = lang;
+      document.dispatchEvent(new CustomEvent('site-lang-change'));
     }
 
     function toggle() {

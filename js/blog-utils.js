@@ -264,7 +264,8 @@ async function renderBlogPost() {
 
   const baseSlug = getBaseSlug(slug);
   const explicitLang = getLangFromSlug(slug);
-  const preferredLang = explicitLang || getPreferredLang();
+  const siteLang =
+    document.documentElement.getAttribute('data-lang') || getPreferredLang();
 
   const allSlugs = await fetchPublishedSlugs();
   const hasEnglish = allSlugs.includes(`${baseSlug}-en`);
@@ -272,10 +273,12 @@ async function renderBlogPost() {
   const hasBase = allSlugs.includes(baseSlug);
 
   let selectedSlug = slug;
-  if (!explicitLang) {
-    if (preferredLang === 'pt' && hasPortuguese) {
+  if (hasEnglish && hasPortuguese) {
+    selectedSlug = siteLang === 'pt' ? `${baseSlug}-pt` : `${baseSlug}-en`;
+  } else if (!explicitLang) {
+    if (siteLang === 'pt' && hasPortuguese) {
       selectedSlug = `${baseSlug}-pt`;
-    } else if (preferredLang === 'en' && hasEnglish) {
+    } else if (siteLang === 'en' && hasEnglish) {
       selectedSlug = `${baseSlug}-en`;
     } else if (hasEnglish) {
       selectedSlug = `${baseSlug}-en`;
@@ -318,7 +321,8 @@ async function renderBlogPost() {
     .map(tag => `<a href="./blog.html?tag=${encodeURIComponent(tag)}" class="tag">${tag}</a>`)
     .join('');
 
-  const currentLang = getLangFromSlug(selectedSlug) || (preferredLang === 'pt' ? 'pt' : 'en');
+  const currentLang =
+    getLangFromSlug(selectedSlug) || (siteLang === 'pt' ? 'pt' : 'en');
   const langSwitcherHtml = renderPostLanguageSwitcher(baseSlug, selectedSlug, { en: hasEnglish, pt: hasPortuguese }, currentLang);
 
   const htmlContent = markdownToHtml(content);

@@ -25,22 +25,38 @@
     return getSystemTheme();
   }
 
+  function isPortugueseUi() {
+    return document.documentElement.getAttribute('data-lang') === 'pt';
+  }
+
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.style.colorScheme =
       theme === 'dark' ? 'dark' : 'light';
 
     var dark = theme === 'dark';
+    var pt = isPortugueseUi();
     document.querySelectorAll('.theme-toggle').forEach(function (btn) {
       btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
-      btn.setAttribute(
-        'aria-label',
-        dark ? 'Switch to light mode' : 'Switch to dark mode'
-      );
-      btn.setAttribute(
-        'title',
-        dark ? 'Switch to light mode' : 'Switch to dark mode'
-      );
+      if (pt) {
+        btn.setAttribute(
+          'aria-label',
+          dark ? 'Alternar para modo claro' : 'Alternar para modo escuro'
+        );
+        btn.setAttribute(
+          'title',
+          dark ? 'Alternar para modo claro' : 'Alternar para modo escuro'
+        );
+      } else {
+        btn.setAttribute(
+          'aria-label',
+          dark ? 'Switch to light mode' : 'Switch to dark mode'
+        );
+        btn.setAttribute(
+          'title',
+          dark ? 'Switch to light mode' : 'Switch to dark mode'
+        );
+      }
     });
   }
 
@@ -76,4 +92,8 @@
     .addEventListener('change', function () {
       if (!getStored()) applyTheme(getSystemTheme());
     });
+
+  document.addEventListener('site-lang-change', function () {
+    applyTheme(getEffectiveTheme());
+  });
 })();

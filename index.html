@@ -545,11 +545,11 @@
       <button type="button" class="theme-toggle theme-toggle--mobile" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
         <span class="theme-toggle-label theme-toggle-label--dark" aria-hidden="true">
           <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-          Dark
+          <span data-en>Dark</span><span data-pt>Escuro</span>
         </span>
         <span class="theme-toggle-label theme-toggle-label--light" aria-hidden="true">
           <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-          Light
+          <span data-en>Light</span><span data-pt>Claro</span>
         </span>
       </button>
       <button type="button" class="lang-toggle" aria-label="Switch language">
@@ -570,11 +570,11 @@
           <button type="button" class="theme-toggle theme-toggle--desktop" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
             <span class="theme-toggle-label theme-toggle-label--dark" aria-hidden="true">
               <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-              Dark
+              <span data-en>Dark</span><span data-pt>Escuro</span>
             </span>
             <span class="theme-toggle-label theme-toggle-label--light" aria-hidden="true">
               <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-              Light
+              <span data-en>Light</span><span data-pt>Claro</span>
             </span>
           </button>
         </li>
@@ -584,7 +584,7 @@
         <li><a href="#art"><span data-en>My Art</span><span data-pt>Minha Arte</span></a></li>
         <li><a href="#research"><span data-en>Research</span><span data-pt>Pesquisa</span></a></li>
         <li><a href="#goals"><span data-en>Goals</span><span data-pt>Metas</span></a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="blog.html"><span data-en>Blog</span><span data-pt>Blog</span></a></li>
         <li><a href="#connect"><span data-en>Connect</span><span data-pt>Contato</span></a></li>
       </ul>
     </div>
@@ -963,6 +963,7 @@
     function applyLang(lang) {
       document.documentElement.setAttribute('data-lang', lang);
       document.documentElement.lang = lang;
+      document.dispatchEvent(new CustomEvent('site-lang-change'));
     }
 
     function toggle() {

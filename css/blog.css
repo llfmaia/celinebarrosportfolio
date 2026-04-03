@@ -47,28 +47,38 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   min-height: 3.75rem;
   padding: 0.35rem 0;
   gap: 0.75rem;
+  min-width: 0;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  width: 100%;
+  gap: 1rem;
+  flex: 1 1 auto;
+  min-width: 0;
   justify-content: flex-end;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .nav-brand {
-  flex: 1 1 160px;
+  flex: 0 1 auto;
   min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .site-nav ul {
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
@@ -77,20 +87,15 @@ a:hover {
   }
 
   .nav-inner {
-    align-items: flex-start;
     gap: 0.5rem;
   }
 
   .nav-actions {
-    justify-content: space-between;
-    width: 100%;
     gap: 0.5rem;
   }
 
   .site-nav ul {
     gap: 0.6rem;
-    justify-content: center;
-    width: 100%;
   }
 
   .site-nav ul li {
@@ -154,15 +159,16 @@ a:hover {
     order: 3;
     width: 100%;
     justify-content: center;
+    overflow-x: visible;
   }
 
-  .site-nav ul {
+  .nav-inner--post .site-nav ul {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
   }
 
-  .site-nav ul li {
+  .nav-inner--post .site-nav ul li {
     white-space: nowrap;
   }
 }
@@ -181,6 +187,7 @@ a:hover {
 .nav-inner--post .nav-actions {
   justify-self: end;
   grid-column: 3;
+  min-width: 0;
 }
 
 .nav-brand {
@@ -260,9 +267,16 @@ main {
 
 @media (max-width: 768px) {
   main {
-    padding-top: 10rem;
+    padding-top: 5.75rem;
   }
   .blog-page-header {
+    scroll-margin-top: 5.75rem;
+  }
+  /* Post page nav stacks (back / title / actions); needs more offset */
+  body:has(.nav-inner--post) main {
+    padding-top: 10rem;
+  }
+  body:has(.nav-inner--post) .blog-page-header {
     scroll-margin-top: 10rem;
   }
 }
@@ -739,7 +753,6 @@ h1.blog-title {
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   main {
-    padding-top: 4rem;
     background-attachment: scroll;
   }
 
