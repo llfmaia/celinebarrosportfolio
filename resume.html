@@ -3,31 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){try{var k='theme',s=localStorage.getItem(k);if(s==='light'||s==='dark'){document.documentElement.setAttribute('data-theme',s);}else if(window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();
+</script>
 <title>Celine Oliveira Barros Resume</title>
+<link rel="stylesheet" href="./css/theme.css" />
 <style>
-  :root {
-    --sage: #7A9E7E;
-    --sage-deep: #5C8260;
-    --sage-light: #C0D8C3;
-    --sage-pale: #E8F0E9;
-    --lavender: #9B8EC4;
-    --lavender-deep: #7B6FA8;
-    --lavender-light: #C7BFE0;
-    --lavender-pale: #EDE9F6;
-    --cream: #FAFAF7;
-    --ink: #2C2C2C;
-    --ink-light: #4A4A4A;
-    --ink-muted: #777777;
-    --border: #E2DED6;
-    --font-display: Georgia, 'Times New Roman', serif;
-    --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: var(--font-body);
-    background: #E8E4DE;
+    background: var(--resume-body-bg);
     color: var(--ink);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -43,7 +29,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    background: rgba(250, 250, 247, 0.95);
+    background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     display: flex;
@@ -51,6 +37,14 @@
     justify-content: center;
     gap: 1rem;
     padding: 0.7rem 2rem;
+    flex-wrap: wrap;
+  }
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .toolbar-label {
     font-family: var(--font-display);
@@ -68,14 +62,14 @@
     font-family: var(--font-body);
     cursor: pointer;
     border: 1px solid var(--border);
-    background: white;
+    background: var(--warm-white);
     color: var(--ink-light);
     transition: all 0.25s;
     text-decoration: none;
   }
   .toolbar-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px var(--resume-toolbar-shadow);
   }
   .toolbar-btn.primary {
     background: var(--sage);
@@ -90,9 +84,9 @@
   .resume-page {
     width: 8.5in;
     min-height: 11in;
-    background: white;
+    background: var(--warm-white);
     border-radius: 4px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 24px var(--resume-page-shadow), 0 1px 4px var(--resume-toolbar-shadow);
     margin-top: 4rem;
     padding: 0;
     position: relative;
@@ -126,7 +120,7 @@
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    background: white;
+    background: var(--warm-white);
     padding: 0 0.6rem;
     color: var(--sage-light);
     font-size: 0.9rem;
@@ -320,6 +314,8 @@
       border-radius: 0;
       margin-top: 0;
       width: 100%;
+      background: #fff !important;
+      color: #2c2c2c !important;
     }
     .resume-page::before {
       -webkit-print-color-adjust: exact;
@@ -359,9 +355,19 @@
 <!-- TOOLBAR -->
 <div class="toolbar">
   <span class="toolbar-label">Celine's Resume</span>
-  <div style="display: flex; gap: 1rem;">
-    <a href="/" class="toolbar-btn">← Home</a>
-    <a href="/blog.html" class="toolbar-btn">Blog</a>
+  <div class="toolbar-actions">
+    <button type="button" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+      <span class="theme-toggle-label theme-toggle-label--dark" aria-hidden="true">
+        <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        Dark
+      </span>
+      <span class="theme-toggle-label theme-toggle-label--light" aria-hidden="true">
+        <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        Light
+      </span>
+    </button>
+    <a href="./index.html" class="toolbar-btn">← Home</a>
+    <a href="./blog.html" class="toolbar-btn">Blog</a>
     <button class="toolbar-btn primary" onclick="window.print()">&#128438; Print / Save PDF</button>
   </div>
 </div>
@@ -561,5 +567,6 @@
   </div>
 </div>
 
+<script src="./js/theme.js"></script>
 </body>
 </html>

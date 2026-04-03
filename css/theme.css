@@ -1,0 +1,172 @@
+/**
+ * Light / dark theme tokens. Toggle via html[data-theme="dark"].
+ * Default (no attribute) matches :root light palette; script sets data-theme on load.
+ */
+
+:root {
+  color-scheme: light;
+  --sage: #7a9e7e;
+  --sage-deep: #5c8260;
+  --sage-light: #c0d8c3;
+  --sage-pale: #e8f0e9;
+  --lavender: #9b8ec4;
+  --lavender-deep: #7b6fa8;
+  --lavender-light: #c7bfe0;
+  --lavender-pale: #ede9f6;
+  --cream: #fafaf7;
+  --warm-white: #ffffff;
+  --ink: #2c2c2c;
+  --ink-light: #555555;
+  --ink-muted: #888888;
+  --blush: #f2e4e1;
+  --peach: #f5d5c8;
+  --border: #e2ded6;
+  --shadow: rgba(122, 158, 126, 0.1);
+  --shadow-lav: rgba(155, 142, 196, 0.1);
+  --nav-bg: rgba(250, 250, 247, 0.92);
+  --nav-dropdown-bg: rgba(250, 250, 247, 0.97);
+  --resume-body-bg: #e8e4de;
+  --resume-toolbar-shadow: rgba(0, 0, 0, 0.08);
+  --resume-page-shadow: rgba(0, 0, 0, 0.1);
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --sage: #8fb896;
+  --sage-deep: #b8d4be;
+  --sage-light: #3d5248;
+  --sage-pale: #1a221e;
+  --lavender: #a898c9;
+  --lavender-deep: #c9bfe8;
+  --lavender-light: #4a4558;
+  --lavender-pale: #1e1c28;
+  --cream: #12141a;
+  --warm-white: #1a1f26;
+  --ink: #e8e8e3;
+  --ink-light: #b8b8b0;
+  --ink-muted: #94948c;
+  --blush: #2a2224;
+  --peach: #2a2420;
+  --border: #2d333d;
+  --shadow: rgba(0, 0, 0, 0.35);
+  --shadow-lav: rgba(0, 0, 0, 0.28);
+  --nav-bg: rgba(18, 20, 26, 0.92);
+  --nav-dropdown-bg: rgba(22, 25, 32, 0.98);
+  --resume-body-bg: #0f1218;
+  --resume-toolbar-shadow: rgba(0, 0, 0, 0.35);
+  --resume-page-shadow: rgba(0, 0, 0, 0.45);
+}
+
+/* Optional: soften hero glows in dark mode (index inline styles reference these) */
+html[data-theme='dark'] .hero::before {
+  background: radial-gradient(
+    circle,
+    rgba(122, 158, 126, 0.07) 0%,
+    transparent 70%
+  );
+}
+
+html[data-theme='dark'] .hero::after {
+  background: radial-gradient(
+    circle,
+    rgba(122, 158, 126, 0.05) 0%,
+    transparent 70%
+  );
+}
+
+/* === Theme toggle: text + icon (matches nav links) === */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  transition: color 0.3s;
+  flex-shrink: 0;
+  line-height: 1;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+}
+
+/* Remove UA button padding (Safari/Firefox) so it matches <a> in the nav */
+.theme-toggle::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--sage);
+  transition: width 0.3s;
+}
+
+.theme-toggle:hover {
+  color: var(--sage-deep);
+}
+
+.theme-toggle:hover::after {
+  width: 100%;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+}
+
+.theme-toggle-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* “Dark” = switch to dark (shown in light mode); “Light” = switch to light */
+.theme-toggle-label {
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  line-height: 1;
+}
+
+.theme-toggle-label--light {
+  display: none;
+}
+
+html[data-theme='dark'] .theme-toggle-label--dark {
+  display: none;
+}
+
+html[data-theme='dark'] .theme-toggle-label--light {
+  display: inline-flex;
+}
+
+/* Toolbar: text only, no underline (sits next to pill buttons) */
+.toolbar .theme-toggle::after {
+  display: none;
+}
+
+.toolbar .theme-toggle {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0;
+}
