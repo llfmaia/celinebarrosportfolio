@@ -452,51 +452,6 @@ h1.blog-title {
   margin-bottom: 1rem;
 }
 
-.post-lang-switcher {
-  margin: 1.25rem 0 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.9rem;
-  color: var(--ink-muted);
-}
-
-.post-lang-switcher-label {
-  margin: 0;
-  font-weight: 500;
-}
-
-.post-lang-buttons {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.post-lang-btn {
-  padding: 0.35rem 0.7rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--cream);
-  color: var(--ink);
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.post-lang-btn:hover,
-.post-lang-btn:focus-visible {
-  background: var(--sage-pale);
-  border-color: var(--sage-deep);
-  outline: none;
-}
-
-.post-lang-btn.active {
-  background: var(--sage-deep);
-  color: #fff;
-  border-color: var(--sage-deep);
-}
-
 .post-card-language {
   display: inline-block;
   margin-left: 0.5rem;
