@@ -345,8 +345,18 @@
       padding: 1.8rem 1.5rem 1.5rem;
     }
     body { padding: 0 0 5rem; }
-    .toolbar { padding: 0.6rem 1rem; }
+    .toolbar { padding: 0.6rem 1rem; justify-content: space-between; }
     .toolbar-label { display: none; }
+    .toolbar-actions {
+      width: 100%;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .toolbar-btn, .lang-toggle, .theme-toggle {
+      font-size: 0.72rem;
+      padding: 0.35rem 0.8rem;
+    }
     .resume-page { margin-top: 3.5rem; }
   }
 
