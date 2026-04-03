@@ -123,13 +123,13 @@ function renderAuthorSection() {
       <img src="${profileSrc}" alt="Celine Oliveira Barros" class="author-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
       <div class="author-avatar-fallback" style="display:none;">CB</div>
       <div class="author-content">
-        <p class="author-eyebrow">Written by</p>
+        <p class="author-eyebrow"><span data-en>Written by</span><span data-pt>Escrito por</span></p>
         <h3 class="author-name">Celine Oliveira Barros</h3>
-        <p class="author-bio">Student, creator, and storyteller sharing reflections on psychology, design, and intentional living.</p>
+        <p class="author-bio"><span data-en>Student, creator, and storyteller sharing reflections on psychology, design, and intentional living.</span><span data-pt>Estudante, criadora e contadora de histórias, compartilhando reflexões sobre psicologia, design e vida com intenção.</span></p>
         <div class="author-socials">
-          <a href="mailto:celine.barros22@gmail.com" class="author-social-link">Email</a>
+          <a href="mailto:celine.barros22@gmail.com" class="author-social-link"><span data-en>Email</span><span data-pt>E-mail</span></a>
           <a href="https://instagram.com/celine.urfav" target="_blank" rel="noopener" class="author-social-link">Instagram</a>
-          <a href="./resume.html" class="author-social-link">Resume</a>
+          <a href="./resume.html" class="author-social-link"><span data-en>Resume</span><span data-pt>Currículo</span></a>
         </div>
         <p class="author-signature">Celine</p>
       </div>
@@ -217,37 +217,6 @@ async function renderBlogListing() {
     .join('');
 }
 
-function renderPostLanguageSwitcher(baseSlug, currentSlug, availableLangs, currentLang) {
-  if (!availableLangs.en && !availableLangs.pt) return '';
-
-  const links = [];
-  if (availableLangs.en) {
-    const active = currentLang === 'en';
-    links.push(`
-      <a href="./post.html?slug=${encodeURIComponent(baseSlug + '-en')}" class="post-lang-btn${active ? ' active' : ''}" aria-current="${active ? 'true' : 'false'}">
-        <span data-en>English</span><span data-pt>Inglês</span>
-      </a>
-    `);
-  }
-  if (availableLangs.pt) {
-    const active = currentLang === 'pt';
-    links.push(`
-      <a href="./post.html?slug=${encodeURIComponent(baseSlug + '-pt')}" class="post-lang-btn${active ? ' active' : ''}" aria-current="${active ? 'true' : 'false'}">
-        <span data-en>Português</span><span data-pt>Português</span>
-      </a>
-    `);
-  }
-
-  if (!links.length) return '';
-
-  return `
-    <section class="post-lang-switcher" aria-label="Choose post language">
-      <p class="post-lang-switcher-label"><span data-en>Read this post in:</span><span data-pt>Ler este post em:</span></p>
-      <div class="post-lang-buttons">${links.join('')}</div>
-    </section>
-  `;
-}
-
 /**
  * Render individual blog post page
  */
@@ -264,7 +233,8 @@ async function renderBlogPost() {
 
   const baseSlug = getBaseSlug(slug);
   const explicitLang = getLangFromSlug(slug);
-  const preferredLang = explicitLang || getPreferredLang();
+  const siteLang =
+    document.documentElement.getAttribute('data-lang') || getPreferredLang();
 
   const allSlugs = await fetchPublishedSlugs();
   const hasEnglish = allSlugs.includes(`${baseSlug}-en`);
@@ -272,10 +242,12 @@ async function renderBlogPost() {
   const hasBase = allSlugs.includes(baseSlug);
 
   let selectedSlug = slug;
-  if (!explicitLang) {
-    if (preferredLang === 'pt' && hasPortuguese) {
+  if (hasEnglish && hasPortuguese) {
+    selectedSlug = siteLang === 'pt' ? `${baseSlug}-pt` : `${baseSlug}-en`;
+  } else if (!explicitLang) {
+    if (siteLang === 'pt' && hasPortuguese) {
       selectedSlug = `${baseSlug}-pt`;
-    } else if (preferredLang === 'en' && hasEnglish) {
+    } else if (siteLang === 'en' && hasEnglish) {
       selectedSlug = `${baseSlug}-en`;
     } else if (hasEnglish) {
       selectedSlug = `${baseSlug}-en`;
@@ -318,9 +290,6 @@ async function renderBlogPost() {
     .map(tag => `<a href="./blog.html?tag=${encodeURIComponent(tag)}" class="tag">${tag}</a>`)
     .join('');
 
-  const currentLang = getLangFromSlug(selectedSlug) || (preferredLang === 'pt' ? 'pt' : 'en');
-  const langSwitcherHtml = renderPostLanguageSwitcher(baseSlug, selectedSlug, { en: hasEnglish, pt: hasPortuguese }, currentLang);
-
   const htmlContent = markdownToHtml(content);
   const coverSrc = frontmatter.cover ? resolveSitePath(frontmatter.cover) : '';
 
@@ -332,7 +301,6 @@ async function renderBlogPost() {
         <time class="post-date">${dateDisplay}</time>
         ${tagsHtml ? `<div class="post-tags">${tagsHtml}</div>` : ''}
       </header>
-      ${langSwitcherHtml}
       <div class="post-body">
         ${htmlContent}
       </div>
