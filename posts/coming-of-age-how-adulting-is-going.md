@@ -6,8 +6,6 @@ tags: Teenager,Personal Narrative,Relatable,Growing Up
 cover: /images/1775189801566-breackfast-club.jpg
 ---
 
-# Coming of Age: How "Adulting" is Going
-
 My parents were right. Fourteen-year-old Celine would disagree completely with me, but it is true; my parents were right. Have you ever had the adult talk with someone older than you? It normally starts with a pre-teen or teenager (in this case, me) saying "Ugh! I wish I was an adult, making my own decisions and living life like I want." Then, the average adult will turn and say "You have no idea how hard it is to be an adult, you should enjoy it while you can." And then, we proceed to roll our eyes and just ignore what they said. Yeah, I know you have been there.
 
 Looking back at it now, I really should have taken their advice. Eighteen years passed in a flash and being an adult has shown to be far from what I expected it to be. I really thought I would turn 18 and suddenly all adult knowledge would automatically download in my head. I would wake up one day and know exactly what to do with my life.
@@ -18,7 +16,7 @@ It is funny to look back and realize I thought I knew more at thirteen than adul
 
 This was my biggest excitement as a fourteen-year-old (we shall call this version of me, Young Celine). In my head — fed by Disney Channel and 2000s movies — I would have the most party-going, thousand-friends and crazy social life ever. Young Celine thought I would wake up every weekend in a friend's house after a night out and would spend the whole day just painting nails and walking on campus. 
 
-The eighteen-year-old (the Present Celine) is far from that reality. Although I can enjoy a good get-together with my friends, they are far from the "crazy house parties" I imagined. 
+The eighteen-year-old (the Present Celine) is far from that reality. Although I can enjoy a good get-together with my friends, they are not "crazy house parties" I imagined. 
 
 But I would argue that my current social life is much healthier and more enjoyable than the one I imagined; I cultivated in my life friends that I truly trust, people that are part of my support system and who brighten my day. And to me, that is the true goal of friendship, to be there for each other when everything is changing; to call at night when you are kind of sad, to sing Disney songs (especially from Descendants) at the loudest possible volume and to just be there even if not all the time. 
 
@@ -28,7 +26,7 @@ Young Celine would be a little disappointed at our "not so glamorous" social sit
 
 I had a really hard time deciding what to do with my life. Younger Celine would change dream careers more than Barbie would change hers. In the same year, I went from computer science to paleontology, archaeology, neuroscience, biotechnology and acting. The final decision? I would become a neurosurgeon and work in "chips to help non-verbal kids speak."
 
-You might be thinking that actually sounds like a solid plan. The problem is, I hate blood. I have always hated blood, surgery and just overall having someone's life in my hands. I took four years to finally decide what to do with my life — and if you haven't read my site at all, I'm doing psychology — and honestly? It still does not feel right. Not that I don't love psychology — I absolutely love all of it — it's just that making big life decisions like that never truly feel real or right. I might even find a different path during college or my masters. It is just crazy how life changes around us and how we change in response.
+You might be thinking that actually sounds like a solid plan. The problem is, I hate blood. I have always hated blood, surgery and the feeling of having someone's life in my hands. I took four years to finally decide what to do with my life — and if you haven't read my site at all, I'm doing psychology — and honestly? It still does not feel right. Not that I don't love psychology — I absolutely adore all of its parts — it's just that making big life decisions like that never truly feel real or right. There is always that fear of not doing it "the right way" (even though there is no right way). It's crazy how unpredictable life is, how it changes around us and how we change in response.
 
 ## Future
 
@@ -36,6 +34,6 @@ Young Celine had the future all mapped out in front of her, every single phase s
 
 Present Celine realizes there is no map; there is no such thing as a perfect plan with no obstacles. And to be honest? I'm okay with that; I know it sounds crazy, but I have learned to accept the chaos and unpredictability of life as a gift. 
 
-If this post has made anything obvious, it's that nothing I expected came to pass — really "Violeta" coded (we need to romanticise life a little, right?) — and my life turned out better than I could have planned. The friends I did not expect. The career I did not anticipate. The messy process of "adulting."
+If this post has made anything obvious, it's that nothing I expected came to pass — really "Soy Luna" coded (we need to romanticise life a little, right?) — and my life turned out better than I could have planned. The friends I did not expect. The career I did not anticipate. The messy process of "adulting."
 
 I don't know what the future holds, and I have no idea what the next Present Celine will think of my decisions and philosophies. But I have learned to live this chaos the best I can. Maybe that's the real "adulting" — not having all the answers nor any idea of what to do, but still trying, still persisting and seeing the beautiful side of surprise. In conclusion, a good Disney Channel movie is one with a strong plot twist.
