@@ -25,38 +25,80 @@
     min-height: 100vh;
   }
 
-  /* === TOOLBAR === */
-  .toolbar {
+  /* === TOOLBAR (hamburger on small screens, like index.html) === */
+  nav.toolbar {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1rem, 4vw, 2rem);
+    min-width: 0;
+  }
+  .toolbar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 0.7rem 2rem;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-height: 56px;
   }
   .toolbar-actions {
     display: flex;
     align-items: center;
     gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+  }
+  .toolbar-actions > .theme-toggle,
+  .toolbar-actions > .lang-toggle {
+    flex-shrink: 0;
+  }
+  .toolbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
+  .toolbar-menu .toolbar-btn {
+    flex-shrink: 0;
+  }
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+  .mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    margin: 5px 0;
+    transition: 0.3s;
   }
   .toolbar-label {
     font-family: var(--font-display);
     font-size: 0.85rem;
     color: var(--ink-muted);
     font-style: italic;
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .toolbar-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
+    white-space: nowrap;
     padding: 0.5rem 1.2rem;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -345,13 +387,36 @@
       padding: 1.8rem 1.5rem 1.5rem;
     }
     body { padding: 0 0 5rem; }
-    .toolbar { padding: 0.6rem 1rem; justify-content: space-between; }
-    .toolbar-label { display: none; }
-    .toolbar-actions {
+    nav.toolbar { padding: 0 0.8rem; }
+    .toolbar-inner { min-height: 52px; }
+    .toolbar-label {
+      font-size: 0.78rem;
+      max-width: 42vw;
+    }
+    .toolbar-menu {
+      display: none;
+    }
+    .toolbar.open .toolbar-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--nav-dropdown-bg);
+      backdrop-filter: blur(16px);
+      padding: 1rem 1.25rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      gap: 0.65rem;
+      box-shadow: 0 12px 24px var(--resume-toolbar-shadow);
+    }
+    .toolbar.open .toolbar-menu .toolbar-btn {
+      justify-content: center;
       width: 100%;
-      justify-content: flex-start;
-      gap: 0.5rem;
-      flex-wrap: wrap;
+    }
+    .mobile-toggle {
+      display: block;
     }
     .toolbar-btn, .lang-toggle, .theme-toggle {
       font-size: 0.72rem;
@@ -395,34 +460,41 @@
 <body>
 
 <!-- TOOLBAR -->
-<div class="toolbar">
-  <span class="toolbar-label">Celine's Resume</span>
-  <div class="toolbar-actions">
-    <button type="button" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
-      <span class="theme-toggle-label theme-toggle-label--dark" aria-hidden="true">
-        <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-        <span data-en>Dark</span><span data-pt>Escuro</span>
-      </span>
-      <span class="theme-toggle-label theme-toggle-label--light" aria-hidden="true">
-        <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-        <span data-en>Light</span><span data-pt>Claro</span>
-      </span>
-    </button>
-    <button type="button" class="lang-toggle" aria-label="Switch language">
-      <span class="lang-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
-          <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M2.05 12h19.9M12 2.05v19.9M6.6 6.6l10.8 10.8M17.4 6.6L6.6 17.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span class="lang-label-en">PT-BR</span>
-      <span class="lang-label-pt">en</span>
-    </button>
-    <a href="./index.html" class="toolbar-btn"><span data-en>← Home</span><span data-pt>← Início</span></a>
-    <a href="./blog.html" class="toolbar-btn"><span data-en>Blog</span><span data-pt>Blog</span></a>
-    <button class="toolbar-btn primary" onclick="window.print()">&#128438; <span data-en>Print / Save PDF</span><span data-pt>Imprimir / Salvar PDF</span></button>
+<nav id="resume-toolbar" class="toolbar" aria-label="Resume toolbar">
+  <div class="toolbar-inner">
+    <span class="toolbar-label">Celine's Resume</span>
+    <div class="toolbar-actions">
+      <button type="button" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+        <span class="theme-toggle-label theme-toggle-label--dark" aria-hidden="true">
+          <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span data-en>Dark</span><span data-pt>Escuro</span>
+        </span>
+        <span class="theme-toggle-label theme-toggle-label--light" aria-hidden="true">
+          <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <span data-en>Light</span><span data-pt>Claro</span>
+        </span>
+      </button>
+      <button type="button" class="lang-toggle" aria-label="Switch language">
+        <span class="lang-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2.05 12h19.9M12 2.05v19.9M6.6 6.6l10.8 10.8M17.4 6.6L6.6 17.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="lang-label-en">PT-BR</span>
+        <span class="lang-label-pt">en</span>
+      </button>
+      <button type="button" class="mobile-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="resume-toolbar-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div id="resume-toolbar-menu" class="toolbar-menu">
+        <a href="./index.html" class="toolbar-btn"><span data-en>← Home</span><span data-pt>← Início</span></a>
+        <a href="./blog.html" class="toolbar-btn"><span data-en>Blog</span><span data-pt>Blog</span></a>
+        <button type="button" class="toolbar-btn primary" onclick="window.print()">&#128438; <span data-en>Print / Save PDF</span><span data-pt>Imprimir / Salvar PDF</span></button>
+      </div>
+    </div>
   </div>
-</div>
+</nav>
 
 <!-- RESUME -->
 <div class="resume-page">
@@ -658,6 +730,29 @@
         e.preventDefault();
         toggle();
       }
+    });
+  })();
+
+  (function () {
+    var nav = document.getElementById('resume-toolbar');
+    var toggleBtn = nav && nav.querySelector('.mobile-toggle');
+    var menu = document.getElementById('resume-toolbar-menu');
+    if (!nav || !toggleBtn || !menu) return;
+
+    function setOpen(open) {
+      nav.classList.toggle('open', open);
+      toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggleBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    toggleBtn.addEventListener('click', function () {
+      setOpen(!nav.classList.contains('open'));
+    });
+
+    menu.querySelectorAll('a, button').forEach(function (el) {
+      el.addEventListener('click', function () {
+        setOpen(false);
+      });
     });
   })();
 </script>
