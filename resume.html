@@ -347,10 +347,35 @@
 
   /* === PRINT === */
   @media print {
+    /* Force light-theme tokens so print matches light mode (readable ink, not grey-on-white) */
+    html[data-theme="dark"] {
+      color-scheme: light;
+      --sage: #7a9e7e;
+      --sage-deep: #5c8260;
+      --sage-light: #c0d8c3;
+      --sage-pale: #e8f0e9;
+      --lavender: #9b8ec4;
+      --lavender-deep: #7b6fa8;
+      --lavender-light: #c7bfe0;
+      --lavender-pale: #ede9f6;
+      --cream: #fafaf7;
+      --warm-white: #ffffff;
+      --ink: #2c2c2c;
+      --ink-light: #555555;
+      --ink-muted: #888888;
+      --blush: #f2e4e1;
+      --peach: #f5d5c8;
+      --border: #e2ded6;
+      --shadow: rgba(122, 158, 126, 0.1);
+      --shadow-lav: rgba(155, 142, 196, 0.1);
+      --resume-body-bg: #e8e4de;
+      --resume-page-shadow: rgba(0, 0, 0, 0.1);
+    }
     body {
       background: white;
       padding: 0;
     }
+    nav.toolbar,
     .toolbar { display: none; }
     .resume-page {
       box-shadow: none;
