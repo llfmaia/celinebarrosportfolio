@@ -10,7 +10,7 @@ My parents were right. Fourteen-year-old Celine would disagree completely with m
 
 Looking back at it now, I really should have taken their advice. Eighteen years passed in a flash and being an adult has shown to be far from what I expected it to be. I really thought I would turn 18 and suddenly all adult knowledge would automatically download in my head. I would wake up one day and know exactly what to do with my life.
 
-It is funny to look back and realize I thought I knew more at thirteen than adults over twice my age, after all, in my head I had all the knowledge in the world. I would argue that true wisdom comes from understanding we barely know anything, or as Socrates put it over two thousand years ago, "I know that I know nothing" (Plato, *Apology*, 21d). And so, I'll give you a little review on how adulting has been and the differences from my pre-teen expectations.
+It is funny to look back and realize I thought I knew more at thirteen than adults over twice my age, after all, in my head I had all the knowledge in the world. I would argue that true wisdom comes from understanding we barely know anything, or as Socrates put it over two thousand years ago, "I know that I know nothing" (Plato, *Apology*, 21d). And so, I'll give you a little review on how adulting — a slang for basically pretending you know how to do adult stuff like paying bills, cooking without burning the house down, and making life decisions on the fly — has been and the differences from my pre-teen expectations.
 
 ## Social Life
 
